@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <div><%= notice %></div>
+    <div><%= alert %></div>
+
+    <% if user_signed_in? %>
+      <%= link_to "Create Survey", new_survey_path %>
+      <%= link_to "List Surveys", surveys_path %>
+      <%= button_to "Log Out", session_path(current_user), method: :delete %>
+    <% else %>
+      <%= link_to "Login", new_session_path  %>
+      <%= link_to "Sign Up", new_registration_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
