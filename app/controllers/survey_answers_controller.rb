@@ -7,11 +7,11 @@ class SurveyAnswersController < ApplicationController
     @survey_answers = SurveyAnswer.where(survey_id: @survey.id)
   end
 
-  # GET /survey_answers/1 or /survey_answers/1.json
+  # GET surveys/1/survey_answers/1
   def show
   end
 
-  # GET /survey_answers/new
+  # GET surveys/1/survey_answers/new
   def new
     @survey_answer = SurveyAnswer.new(survey: @survey)
   end
@@ -20,10 +20,11 @@ class SurveyAnswersController < ApplicationController
   def edit
   end
 
-  # POST /survey_answers or /survey_answers.json
+  # POST surveys/1/survey_answers
   def create
-    @survey_answer = SurveyAnswer.new(survey_answer_params)
+    @survey_answer        = SurveyAnswer.new(survey_answer_params)
     @survey_answer.survey = @survey
+    @survey_answer.user   = current_user
 
     if @survey_answer.save
       redirect_to survey_survey_answers_url(@survey), notice: "Survey answer was successfully created."
@@ -32,8 +33,10 @@ class SurveyAnswersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /survey_answers/1 or /survey_answers/1.json
+  # PATCH/PUT surveys/1/survey_answers/1
   def update
+    @survey_answer.user = current_user
+
     if @survey_answer.update(survey_answer_params)
       redirect_to survey_survey_answers_url(@survey), notice: "Survey answer was successfully updated."
     else
@@ -41,7 +44,7 @@ class SurveyAnswersController < ApplicationController
     end
   end
 
-  # DELETE /survey_answers/1 or /survey_answers/1.json
+  # DELETE surveys/1/survey_answers/1
   def destroy
     @survey_answer.destroy!
 

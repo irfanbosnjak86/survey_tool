@@ -8,4 +8,8 @@
     <strong>Answer:</strong>
     <%= humanize_boolean(survey_answer.answer) %>
   </p>
+
+  <p>
+    <strong>Answered By: <%= survey_answer.user.email %></strong>
+  </p>
 </div>
