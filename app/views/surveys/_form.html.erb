@@ -18,12 +18,12 @@
 
   <div>
     <%= form.fields_for :question do |question| %>
-      <%= question.label :text, style: "display: block" %>
+      <%= question.label "Question", style: "display: block" %>
       <%= question.text_field :text %>
     <% end %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit id: "submit" %>
   </div>
 <% end %>
