@@ -1,5 +1,4 @@
 class SurveyAnswersController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_survey_answer, only: %i[ show edit update destroy ]
 
   # GET /survey_answers or /survey_answers.json
