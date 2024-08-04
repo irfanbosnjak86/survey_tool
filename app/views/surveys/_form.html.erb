@@ -17,8 +17,10 @@
   </div>
 
   <div>
-    <%= form.label :question, style: "display: block" %>
-    <%= form.text_field :question %>
+    <%= form.fields_for :question do |question| %>
+      <%= question.label :text, style: "display: block" %>
+      <%= question.text_field :text %>
+    <% end %>
   </div>
 
   <div>
