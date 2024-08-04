@@ -5,12 +5,11 @@
 <div id="surveys">
   <% @surveys.each do |survey| %>
     <%= render survey %>
-    <p> Percentage of Yes: <%= survey.percentage_of_answers.to_f %>%, No: <%= survey.percentage_of_answers.nil? ? 0.0 : 100 - survey.percentage_of_answers %>%</p>
+    <p> Percentage of Yes: <%= survey.percentage_of_answers.to_f %>%, No: <%= survey.percentage_of_answers.nil? ? 0.0 : (100 - survey.percentage_of_answers.to_f) %>%</p>
     <%= link_to "Answer survey", new_survey_survey_answer_path(survey) %>
+    <%= link_to "Answers of this survey", survey_survey_answers_path(survey) %>
     <p>
       <%= link_to "Show this survey", survey %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New survey", new_survey_path %>

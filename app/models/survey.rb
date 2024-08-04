@@ -10,7 +10,7 @@ class Survey < ApplicationRecord
   def percentage_of_answers
     survey_answers_count ||= SurveyAnswer.joins(:survey)
                                          .select("survey_answers.answer AS answer", "COUNT(*) AS count",
-                                                  "(SELECT COUNT(*) FROM survey_answers WHERE survey_answers.answer = false) AS yes_count")
+                                                  "(SELECT COUNT(*) FROM survey_answers WHERE survey_answers.answer = true) AS yes_count")
                                          .where(survey_id: id)
 
     if survey_answers_count.any?
