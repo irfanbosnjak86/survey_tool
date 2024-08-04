@@ -1,6 +1,6 @@
 class Survey < ApplicationRecord
   belongs_to :user
-  has_many :survey_answers
+  has_many :survey_answers, dependent: :destroy
   has_one :question, dependent: :destroy
 
   validates_presence_of :title

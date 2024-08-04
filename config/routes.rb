@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "surveys#index"
 
-  resources :survey_answers
-  resources :surveys
+  resources :surveys do
+    resources :survey_answers
+  end
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
 
