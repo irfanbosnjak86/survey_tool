@@ -1,5 +1,4 @@
 class SurveysController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_survey, only: %i[ show edit update destroy ]
 
   # GET /surveys or /surveys.json
@@ -13,7 +12,8 @@ class SurveysController < ApplicationController
 
   # GET /surveys/new
   def new
-    @survey = Survey.new
+    @survey = current_user.surveys.new
+    @survey.build_question
   end
 
   # GET /surveys/1/edit
@@ -22,7 +22,7 @@ class SurveysController < ApplicationController
 
   # POST /surveys or /surveys.json
   def create
-    @survey = Survey.new(survey_params)
+    @survey = current_user.surveys.new(survey_params)
 
     respond_to do |format|
       if @survey.save
@@ -66,6 +66,6 @@ class SurveysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def survey_params
-      params.require(:survey).permit(:title, :question)
+      params.require(:survey).permit(:title, question_attributes: [:id, :text])
     end
 end

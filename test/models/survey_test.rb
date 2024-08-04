@@ -2,8 +2,12 @@ require "test_helper"
 
 class SurveyTest < ActiveSupport::TestCase
   class Validation < ActiveSupport::TestCase
+    setup do
+      @user = users(:one)
+    end
+
     test "should not save survey without title" do
-      survey = Survey.new(question: "test question?")
+      survey = Survey.new
 
       assert_not survey.save
     end
@@ -14,8 +18,16 @@ class SurveyTest < ActiveSupport::TestCase
       assert_not survey.save
     end
 
+    test "should not save survey without user" do
+      survey = Survey.new(title: "test title")
+      survey.build_question(text: "Test")
+
+      assert_not survey.save
+    end
+
     test "should save survey with valid attributes" do
-      survey = Survey.new(title: "test title", question: "test question?")
+      survey = Survey.new(title: "test title", user: @user)
+      survey.build_question(text: "Test")
 
       assert survey.save
     end
