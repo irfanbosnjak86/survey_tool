@@ -6,7 +6,7 @@ class SurveysController < ApplicationController
     @surveys = Survey.all
   end
 
-  # GET /surveys/1 or /surveys/1.json
+  # GET /surveys/1
   def show
   end
 
@@ -20,42 +20,31 @@ class SurveysController < ApplicationController
   def edit
   end
 
-  # POST /surveys or /surveys.json
+  # POST /surveys
   def create
     @survey = current_user.surveys.new(survey_params)
 
-    respond_to do |format|
-      if @survey.save
-        format.html { redirect_to survey_url(@survey), notice: "Survey was successfully created." }
-        format.json { render :show, status: :created, location: @survey }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
-      end
+    if @survey.save
+      redirect_to survey_url(@survey), notice: "Survey was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /surveys/1 or /surveys/1.json
+  # PATCH/PUT /surveys/1
   def update
-    respond_to do |format|
-      if @survey.update(survey_params)
-        format.html { redirect_to survey_url(@survey), notice: "Survey was successfully updated." }
-        format.json { render :show, status: :ok, location: @survey }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
-      end
+    if @survey.update(survey_params)
+      redirect_to survey_url(@survey), notice: "Survey was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /surveys/1 or /surveys/1.json
+  # DELETE /surveys/1
   def destroy
     @survey.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to surveys_url, notice: "Survey was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to surveys_url, notice: "Survey was successfully destroyed."
   end
 
   private

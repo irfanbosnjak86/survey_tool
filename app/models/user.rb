@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :surveys
+  has_many :survey_answers
 
   has_secure_password
 

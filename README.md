@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is simple survey tool for creating survey with only one question. The answers can be yes or no.
 
-Things you may want to cover:
+Dependencies: 
 
-* Ruby version
+* Ruby version 3.2
+* Rails version 7.1.2
 
-* System dependencies
+Running the App
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Before running the app do `bundle install`
+* How to start app `rails s`
+* Database creation  `rails db:create db:migrate`
+* How to run the test suite `rails test`

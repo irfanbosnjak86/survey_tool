@@ -1,12 +1,15 @@
 <div id="<%= dom_id survey_answer %>">
   <p>
-    <strong>Answer:</strong>
-    <%= survey_answer.answer %>
+    <strong>Survey:</strong>
+    <%= survey_answer.survey.title %>
   </p>
 
   <p>
-    <strong>Survey:</strong>
-    <%= survey_answer.survey_id %>
+    <strong>Answer:</strong>
+    <%= humanize_boolean(survey_answer.answer) %>
   </p>
 
+  <p>
+    <strong>Answered By: <%= survey_answer.user.email %></strong>
+  </p>
 </div>
