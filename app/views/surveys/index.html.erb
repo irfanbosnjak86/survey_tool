@@ -1,15 +1,16 @@
-<%= notice %></p>
-
-<h1>Surveys</h1>
-
-<div id="surveys">
-  <% @surveys.each do |survey| %>
-    <%= render survey %>
-    <p> Percentage of Yes: <%= survey.percentage_of_answers.to_f %>%, No: <%= survey.percentage_of_answers.nil? ? 0.0 : (100 - survey.percentage_of_answers.to_f) %>%</p>
-    <%= link_to "Answer survey", new_survey_survey_answer_path(survey) %>
-    <%= link_to "Answers of this survey", survey_survey_answers_path(survey) %>
-    <p>
-      <%= link_to "Show this survey", survey %>
-    </p>
-  <% end %>
+<div class="w-full">
+  <hr>
+  <div class="items-center">
+    <h1 class="text-black text-lg font-bold text-4xl" id="surveys">Surveys</h1>
+    <hr>
+    <div class="min-w-full">
+      <% @surveys.each do |survey| %>
+        <div class="md-5 p-3">
+          <%= link_to "#{survey.title}", survey %>
+          <!-- TODO: Create helper for percentage presentation -->
+          <p class="px-3 text-xs">Answer Percentage - Yes: <%= survey.percentage_of_answers.to_f %>%, No: <%= survey.percentage_of_answers.nil? ? 0.0 : (100 - survey.percentage_of_answers.to_f) %>%</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

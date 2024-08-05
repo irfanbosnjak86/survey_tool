@@ -1,10 +1,18 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @survey %>
+<div class="container items-center">
+  <div class="md-5 px-5">
+    <%= render @survey %>
+  </div>
 
-<div>
-  <%= link_to "Edit this survey", edit_survey_path(@survey) %> |
-  <%= link_to "Back to surveys", surveys_path %>
-
-  <%= button_to "Destroy this survey", @survey, method: :delete %>
+  <div class="md-5 p-2">
+    <hr>
+    <%= link_to "Back to surveys", surveys_path, class: "px-3 text-xs" %> |
+    <%= link_to "Answer this survey", new_survey_survey_answer_path(@survey), class: "px-3 text-xs" %> |
+    <%= link_to "Answers of this survey", survey_survey_answers_path(@survey), class: "px-3 text-xs" %> |
+    <% if current_user == @survey.user %>
+      <%= link_to "Edit this survey", edit_survey_path(@survey), class: "px-3 text-xs" %> |
+      <%= button_to "Destroy this survey", @survey, method: :delete, class: "px-3 text-xs" %>
+    <% end %>
+  </div>
 </div>

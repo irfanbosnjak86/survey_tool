@@ -1,12 +1,12 @@
-<div id="<%= dom_id survey %>">
-  <p>
-    <strong>Title:</strong>
+<div id="<%= dom_id survey %>" class="md-4 rounded-3xl border-black-900 border-solid">
+  <p class="my-5">
     <%= survey.title %>
+  <hr>
   </p>
 
-  <p>
-    <strong>Question:</strong>
+  <p class="my-5">
     <%= survey.question.text %>
   </p>
 
+  <p class="px-3 text-xs"> Answer Percentage - Yes: <%= survey.percentage_of_answers.to_f %>%, No: <%= survey.percentage_of_answers.nil? ? 0.0 : (100 - survey.percentage_of_answers.to_f) %>%</p>
 </div>

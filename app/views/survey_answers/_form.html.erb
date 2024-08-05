@@ -11,13 +11,16 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label survey.question.text, style: "display: block" %>
-    <p>Yes/No</p>
-    <%= form.check_box :answer %>
+  <div class="my-5">
+    <p class="md-5">
+      Question: <%= form.label survey.question.text %>
+    </p>
+
+    <p class="p-4">Yes/No <%= form.check_box :answer %></p>
+
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="my-5">
+    <%= form.submit class: "rounded-lg py-1 px-3 bg-blue-500 text-black block font-xs" %>
   </div>
 <% end %>
