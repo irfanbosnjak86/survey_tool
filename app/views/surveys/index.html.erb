@@ -8,7 +8,8 @@
         <div class="md-5 p-3">
           <%= link_to "#{survey.title}", survey %>
           <!-- TODO: Create helper for percentage presentation -->
-          <p class="px-3 text-xs">Answer Percentage - Yes: <%= survey.percentage_of_answers.to_f %>%, No: <%= survey.percentage_of_answers.nil? ? 0.0 : (100 - survey.percentage_of_answers.to_f) %>%</p>
+          <p class="px-3 text-xs"> Number of answers <%= survey.survey_answers.count %></p>
+          <p class="px-3 text-xs"> Percentages - Yes: <%= survey.percentage_of_answers.to_f.round %>%, No: <%= survey.percentage_of_answers.nil? ? 0.0 : (100 - survey.percentage_of_answers.to_f).round %>%</p>
         </div>
       <% end %>
     </div>
