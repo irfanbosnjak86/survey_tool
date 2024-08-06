@@ -1,9 +1,13 @@
-<h1>New Survey answer</h1>
+<div class="container items-center">
+  <h1 class="text-black text-lg font-bold text-4xl" id="new_survey">New Survey answer</h1>
 
-<%= render "form", survey_answer: @survey_answer, survey: @survey %>
+  <div class="md-5 px-5">
+    <%= render "form", survey_answer: @survey_answer, survey: @survey %>
+  </div>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to survey answers", survey_survey_answers_path(@survey) %>
+  <div>
+    <%= link_to "Back to survey answers", survey_survey_answers_path(@survey), class: "px-3 text-xs"  %>
+  </div>
 </div>

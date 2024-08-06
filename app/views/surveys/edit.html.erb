@@ -1,10 +1,14 @@
-<h1>Editing survey</h1>
+<div class="container items-center">
+  <h1 class="text-black text-lg font-bold text-4xl" id="edit_survey_<%= @survey.id %>">Editing survey</h1>
 
-<%= render "form", survey: @survey %>
+  <div class="md-5 px-5">
+    <%= render "form", survey: @survey %>
+  </div>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this survey", @survey %> |
-  <%= link_to "Back to surveys", surveys_path %>
+  <div class="md-5 p-2">
+    <%= link_to "Show this survey", @survey, class: "px-3 text-xs" %> |
+    <%= link_to "Back to surveys", surveys_path, class: "px-3 text-xs" %>
+  </div>
 </div>

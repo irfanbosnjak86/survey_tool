@@ -1,13 +1,20 @@
-<h1>Answers for Survey <%= @survey.title %></h1>
+<div class="w-full">
+  <hr>
+  <div class="items-center">
+    <h1 class="text-black text-lg font-bold text-4xl" id="surveys"> Answers for Survey: <%= @survey.title %></h1>
+    <hr>
+    <div class="min-w-full" id="survey_answers">
+      <% @survey_answers.each do |survey_answer| %>
+        <%= render survey_answer %>
 
-<div id="survey_answers">
-  <% @survey_answers.each do |survey_answer| %>
-    <%= render survey_answer %>
+        <% if current_user == survey_answer.user %>
+          <%= link_to "Edit answer for Survey #{survey_answer.survey.title}", edit_survey_survey_answer_path(@survey, survey_answer), class: "px-3 text-xs" %>
+        <% end %>
+      <% end %>
 
-    <%= link_to "New answer for Survey #{survey_answer.survey.title}", new_survey_survey_answer_path(@survey) %>
-    <%= link_to "Edit answer for Survey #{survey_answer.survey.title}", edit_survey_survey_answer_path(@survey, survey_answer) %>
-    <p>
-      <%= link_to "Show this survey answer", survey_survey_answer_path(@survey, survey_answer) %>
-    </p>
-  <% end %>
+      <p class="md-5 p-10">
+        <%= link_to "New answer for Survey #{@survey.title}", new_survey_survey_answer_path(@survey), class: "py-10 px-3 text-small" %>
+      </p>
+    </div>
+  </div>
 </div>
