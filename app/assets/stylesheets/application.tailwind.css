@@ -11,3 +11,34 @@
 }
 
 */
+
+#notice {
+    opacity: 0;
+    -moz-animation: cssAnimation 5s;
+    /* Firefox */
+    -webkit-animation: cssAnimation 5s;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 5s;
+    /* Opera */
+    animation: cssAnimation 5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
