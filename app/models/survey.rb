@@ -8,12 +8,11 @@ class Survey < ApplicationRecord
   accepts_nested_attributes_for :question
 
   def percentage_of_answers
-    survey_answers_count = SurveyAnswer.joins(:survey)
-                                       .where(survey_id: id)
-                                       .select("survey_answers.answer AS answer",
-                                               "COUNT(*) AS number",
-                                               "(SELECT COUNT(*) FROM survey_answers WHERE survey_answers.answer = true
-                                                AND survey_answers.survey_id = #{id}) AS yes_count")
+    survey_answers_count = survey_answers.where(survey_id: id)
+                                         .select("survey_answers.answer AS answer",
+                                                 "COUNT(*) AS number",
+                                                 "(SELECT COUNT(*) FROM survey_answers WHERE survey_answers.answer = true
+                                                 AND survey_answers.survey_id = #{id}) AS yes_count")
 
 
     if survey_answers_count.any?
